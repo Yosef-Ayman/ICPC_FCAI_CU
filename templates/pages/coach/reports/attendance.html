@@ -1,0 +1,41 @@
+{% extends "layouts/staff-layout.html" %}
+{% block title %}Attendance Report | Coach{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-6xl px-5 py-16 lg:py-24">
+    <h1 class="mt-10 text-3xl font-black tracking-tight sm:text-4xl">Attendance report</h1>
+    {% if wave %}<p class="mt-2 text-sm text-neutral-500">{{ wave.title }} · {{ sessions_count }} session{{ sessions_count|pluralize }}</p>{% endif %}
+
+    <form method="get" class="mt-8 grid gap-3 sm:grid-cols-[1fr_1fr_auto_auto]">
+      <select name="wave" class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm">
+        {% for w in waves %}<option value="{{ w.slug }}" {% if wave and wave.pk == w.pk %}selected{% endif %}>{{ w.title }}</option>{% endfor %}
+      </select>
+      <select name="level" class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm">
+        <option value="">All levels</option>
+        {% for l in levels %}<option value="{{ l.level_number }}" {% if level_number == l.level_number %}selected{% endif %}>Level {{ l.level_number }}</option>{% endfor %}
+      </select>
+      <button class="rounded-full bg-neutral-950 px-6 py-2.5 text-sm font-semibold text-white hover:bg-neutral-800">Apply</button>
+      {% if wave %}<a href="?{% if qs %}{{ qs }}&{% endif %}format=csv" class="rounded-full border border-neutral-300 px-6 py-2.5 text-center text-sm font-semibold hover:bg-neutral-50">Export CSV</a>{% endif %}
+    </form>
+
+    <div class="mt-6 overflow-x-auto rounded-2xl border border-neutral-200">
+      <table class="w-full text-sm">
+        <thead class="border-b border-neutral-200 bg-neutral-50 text-left text-xs font-bold uppercase tracking-widest text-neutral-400">
+          <tr><th class="px-6 py-3">Student</th><th class="px-4 py-3">Level</th><th class="px-4 py-3">Sessions</th><th class="px-4 py-3">Attended</th><th class="px-6 py-3 text-right">Rate</th></tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-100">
+          {% for r in rows %}
+          <tr>
+            <td class="px-6 py-3"><a href="{% url 'app:coach-students-show' r.username %}" class="font-semibold hover:underline">{{ r.name }}</a><p class="text-xs text-neutral-400">@{{ r.username }}</p></td>
+            <td class="px-4 py-3">{{ r.level }}</td>
+            <td class="px-4 py-3">{{ r.total }}</td>
+            <td class="px-4 py-3">{{ r.attended }}</td>
+            <td class="px-6 py-3 text-right font-bold {% if r.rate is None %}text-neutral-300{% elif r.rate < 50 %}text-red-600{% elif r.rate < 75 %}text-amber-600{% else %}text-green-700{% endif %}">{% if r.rate is None %}—{% else %}{{ r.rate }}%{% endif %}</td>
+          </tr>
+          {% empty %}<tr><td colspan="5" class="p-10 text-center text-neutral-500">No data.</td></tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+{% endblock %}

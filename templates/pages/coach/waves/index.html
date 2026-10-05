@@ -1,0 +1,27 @@
+{% extends "layouts/staff-layout.html" %}
+{% block title %}Waves | Coach{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-6xl px-5 py-16 lg:py-24">
+    <div class="mt-10 flex items-end justify-between">
+      <h1 class="text-3xl font-black tracking-tight sm:text-4xl">Waves</h1>
+      <a href="{% url 'app:coach-waves-create' %}" class="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-semibold text-white hover:bg-neutral-800"><i class="fa-solid fa-plus text-xs"></i> New wave</a>
+    </div>
+    <div class="mt-8 divide-y divide-neutral-100 rounded-2xl border border-neutral-200">
+      {% for w in waves %}
+      <div class="flex flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <a href="{% url 'app:waves-show' w.slug %}" class="text-sm font-semibold hover:underline">{{ w.title }}</a>
+          <p class="mt-0.5 text-xs text-neutral-400">Season {{ w.season }} · {{ w.starts_at|date:"M j, Y" }}{% if w.ends_at %} → {{ w.ends_at|date:"M j, Y" }}{% endif %} · {{ w.session_count }} sessions · {{ w.student_count }} students</p>
+        </div>
+        <div class="flex gap-4 text-sm font-semibold">
+          <a href="{% url 'app:coach-sessions' %}?wave={{ w.slug }}" class="hover:underline">Sessions</a>
+          <a href="{% url 'app:coach-report-attendance' %}?wave={{ w.slug }}" class="hover:underline">Report</a>
+          <a href="{% url 'app:coach-waves-edit' w.slug %}" class="hover:underline">Edit</a>
+        </div>
+      </div>
+      {% empty %}<p class="p-10 text-center text-sm text-neutral-500">No waves yet.</p>{% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}

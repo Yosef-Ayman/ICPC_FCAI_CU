@@ -1,0 +1,17 @@
+Django
+asgiref
+django-cors
+django-cors-headers
+djangorestframework
+dj-database-url
+django-allauth
+django-environ
+django-extensions
+gunicorn
+psycopg2-binary
+whitenoise
+pillow
+requests
+cryptography
+PyJWT
+python-dotenv

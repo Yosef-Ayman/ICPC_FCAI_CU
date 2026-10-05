@@ -1,0 +1,65 @@
+{% extends "layouts/staff-layout.html" %}
+{% block title %}{{ student.user.username }} | Coach{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-4xl px-5 py-16 lg:py-24">
+    <a href="{% url 'app:coach-students' %}" class="mt-8 inline-block text-xs font-semibold text-neutral-500 hover:text-neutral-950"><i class="fa-solid fa-arrow-left mr-1"></i> Students</a>
+    <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">{{ student.user.full_name|default:student.user.username }}</h1>
+    <p class="mt-1 text-sm text-neutral-400">@{{ student.user.username }} · {{ student.university_id }}{% if student.user.email %} · {{ student.user.email }}{% endif %}</p>
+
+    <div class="mt-8 grid grid-cols-3 overflow-hidden rounded-2xl border border-neutral-200">
+      <div class="border-r border-neutral-200 p-6"><p class="text-3xl font-black">{{ total }}</p><p class="mt-1 text-sm text-neutral-500">Sessions</p></div>
+      <div class="border-r border-neutral-200 p-6"><p class="text-3xl font-black">{{ attended }}</p><p class="mt-1 text-sm text-neutral-500">Attended</p></div>
+      <div class="p-6"><p class="text-3xl font-black text-[#2b6aad]">{% if rate is None %}—{% else %}{{ rate }}%{% endif %}</p><p class="mt-1 text-sm text-neutral-500">Rate</p></div>
+    </div>
+
+    <h2 class="mt-12 text-xs font-bold uppercase tracking-widest text-neutral-400">Student details</h2>
+    <form method="post" class="mt-4 space-y-6" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="action" value="update">
+      {% if update_form.non_field_errors %}<p class="text-xs text-red-600">{{ update_form.non_field_errors }}</p>{% endif %}
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% for field in update_form %}{% if field.name != "is_active" %}{% include "partials/form_field.html" %}{% endif %}{% endfor %}
+      </div>
+      <label class="flex cursor-pointer items-center gap-3 text-sm font-semibold">{{ update_form.is_active }} Active student</label>
+      <button class="rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-800">Save changes</button>
+    </form>
+
+    <h2 class="mt-12 text-xs font-bold uppercase tracking-widest text-neutral-400">Waves</h2>
+    <div class="mt-4 divide-y divide-neutral-100 rounded-2xl border border-neutral-200">
+      {% for uw in user_waves %}
+      <div class="flex items-center justify-between px-6 py-3">
+        <div>
+          <p class="text-sm font-semibold">{{ uw.wave.title }}</p>
+          <p class="text-xs text-neutral-400">Level {{ uw.level.level_number }} · joined {{ uw.joined_at|date:"M j, Y" }}</p>
+        </div>
+        <form method="post" action="{% url 'app:coach-students-wave-remove' student.user.username uw.wave.slug %}" onsubmit="return confirm('Remove from this wave?')">
+          {% csrf_token %}
+          <button class="text-xs font-semibold text-red-600 hover:underline">Remove</button>
+        </form>
+      </div>
+      {% empty %}<p class="px-6 py-8 text-center text-sm text-neutral-500">Not enrolled in any wave.</p>{% endfor %}
+    </div>
+
+    <form method="post" class="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr_auto]" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="action" value="enroll">
+      {% for field in enroll_form %}<div>{{ field }}{% for e in field.errors %}<p class="mt-1.5 text-xs text-red-600">{{ e }}</p>{% endfor %}</div>{% endfor %}
+      <button class="rounded-full border border-neutral-300 px-5 py-2.5 text-sm font-semibold hover:bg-neutral-50">Enroll / update</button>
+    </form>
+
+    <h2 class="mt-12 text-xs font-bold uppercase tracking-widest text-neutral-400">Recent attendance</h2>
+    <div class="mt-4 divide-y divide-neutral-100 rounded-2xl border border-neutral-200">
+      {% for r in recent %}
+      <div class="flex items-center justify-between px-6 py-3">
+        <div>
+          <p class="text-sm font-semibold">{{ r.session.title }}</p>
+          <p class="text-xs text-neutral-400">{{ r.session.starts_at|date:"M j, Y · h:i A" }}</p>
+        </div>
+        {% if r.attend %}<span class="rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-green-700">Present</span>{% else %}<span class="rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-700">Absent</span>{% endif %}
+      </div>
+      {% empty %}<p class="px-6 py-8 text-center text-sm text-neutral-500">No attendance records.</p>{% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}

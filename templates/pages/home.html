@@ -1,0 +1,495 @@
+{% extends "layouts/guest-layout.html" %} {% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <div
+            class="mb-6 inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1.5"
+          >
+            <span class="h-2 w-2 rounded-full bg-[#2b6aad]"></span>
+
+            <span
+              class="text-xs font-semibold uppercase tracking-widest text-neutral-500"
+            >
+              ICPC FCAI CU
+            </span>
+          </div>
+
+          <h1
+            class="max-w-4xl text-5xl font-black tracking-tight text-neutral-950 sm:text-6xl lg:text-7xl"
+          >
+            Learn.
+            <span class="relative inline-block text-[#2b6aad]">
+              Solve.
+              <span class="absolute -top-10 -left-4">
+                <span class="block h-4 w-4 rounded-full bg-[#2b6aad]"></span>
+                <span
+                  class="absolute left-1/2 top-4 h-7 w-px -translate-x-1/2 rotate-12 bg-[#2b6aad]/40"
+                ></span>
+              </span>
+
+              <span class="absolute -top-14 left-1/2 -translate-x-1/2">
+                <span class="block h-5 w-5 rounded-full bg-[#ad281c]"></span>
+                <span
+                  class="absolute left-1/2 top-5 h-10 w-px -translate-x-1/2 -rotate-6 bg-[#ad281c]/40"
+                ></span>
+              </span>
+
+              <span class="absolute -top-8 -right-4">
+                <span
+                  class="block h-3.5 w-3.5 rounded-full bg-[#f7ab2f]"
+                ></span>
+                <span
+                  class="absolute left-1/2 top-3.5 h-6 w-px -translate-x-1/2 -rotate-12 bg-[#f7ab2f]/40"
+                ></span>
+              </span>
+            </span>
+            Compete.
+          </h1>
+
+          <p
+            class="mt-6 max-w-2xl text-base leading-8 text-neutral-500 sm:text-lg"
+          >
+            A competitive programming community at Faculty of Computers and
+            Artificial Intelligence, Cairo University.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#levels"
+              class="inline-flex items-center gap-3 rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
+            >
+              Explore Levels
+
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+
+            <a
+              href="#about"
+              class="inline-flex items-center gap-3 rounded-full border border-neutral-300 px-6 py-3 text-sm font-semibold text-neutral-700 transition hover:border-neutral-400 hover:bg-neutral-50"
+            >
+              About Community
+            </a>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex lg:justify-end">
+          <div class="relative hidden lg:block">
+            <div class="relative mx-auto w-full max-w-md">
+              <div
+                class="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-2xl shadow-neutral-200/50"
+              >
+                <div
+                  class="flex items-center justify-between border-b border-neutral-200 px-5 py-4"
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="h-2.5 w-2.5 rounded-full bg-[#2b6aad]"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-[#ad281c]"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-[#f7ab2f]"></span>
+                  </div>
+
+                  <span class="font-mono text-xs text-neutral-400">
+                    solution.cpp
+                  </span>
+                </div>
+
+                <div class="p-6 font-mono text-sm leading-8">
+                  <div class="flex">
+                    <span class="mr-6 select-none text-neutral-300">01</span>
+                    <span>
+                      <span class="text-[#ad281c]">void</span>
+                      <span class="text-neutral-900"> solve</span>()
+                    </span>
+                  </div>
+
+                  <div class="flex">
+                    <span class="mr-6 select-none text-neutral-300">02</span>
+                    <span class="pl-4">{</span>
+                  </div>
+
+                  <div class="flex">
+                    <span class="mr-6 select-none text-neutral-300">03</span>
+                    <span class="pl-8">
+                      <span class="text-[#2b6aad]">cin</span>
+                      &gt;&gt; n;
+                    </span>
+                  </div>
+
+                  <div class="flex">
+                    <span class="mr-6 select-none text-neutral-300">04</span>
+                    <span class="pl-8">
+                      <span class="text-[#ad281c]">for</span>
+                      (i = 0; i &lt; n; i++)
+                    </span>
+                  </div>
+
+                  <div class="flex">
+                    <span class="mr-6 select-none text-neutral-300">05</span>
+                    <span class="pl-12"> ... </span>
+                  </div>
+
+                  <div class="flex">
+                    <span class="mr-6 select-none text-neutral-300">06</span>
+                    <span class="pl-4">}</span>
+                  </div>
+
+                  <div
+                    class="mt-5 flex items-center gap-2 border-t border-neutral-100 pt-5"
+                  >
+                    <span class="h-2 w-2 rounded-full bg-[#2b6aad]"></span>
+                    <span class="text-xs text-neutral-400"> Accepted </span>
+                    <span class="ml-auto text-xs font-semibold text-green-600">
+                      0.42s
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="absolute -bottom-6 -left-8 hidden rounded-xl border border-neutral-200 bg-white px-4 py-3 shadow-lg sm:block"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#2b6aad]/10"
+                  >
+                    <i class="fa-solid fa-code text-sm text-[#2b6aad]"></i>
+                  </div>
+
+                  <div>
+                    <p class="text-xs font-bold text-neutral-900">
+                      Problem Solving
+                    </p>
+                    <p class="mt-0.5 text-[11px] text-neutral-400">
+                      Think. Code. Repeat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 px-5 lg:grid-cols-4 lg:px-8">
+      <div class="border-r border-neutral-200 px-5 py-8 first:pl-0">
+        <p class="text-3xl font-black text-neutral-950">3</p>
+        <p class="mt-2 text-sm text-neutral-500">Levels</p>
+      </div>
+
+      <div class="border-r border-neutral-200 px-5 py-8">
+        <p class="text-3xl font-black text-neutral-950">100+</p>
+        <p class="mt-2 text-sm text-neutral-500">Students</p>
+      </div>
+
+      <div class="border-r border-neutral-200 px-5 py-8">
+        <p class="text-3xl font-black text-neutral-950">∞</p>
+        <p class="mt-2 text-sm text-neutral-500">Problems</p>
+      </div>
+
+      <div class="px-5 py-8">
+        <p class="text-3xl font-black text-neutral-950">2026</p>
+        <p class="mt-2 text-sm text-neutral-500">Season</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-[0.2em] text-[#2b6aad]"
+          >
+            About
+          </p>
+
+          <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+            More than solving problems.
+          </h2>
+        </div>
+
+        <div>
+          <p class="text-base leading-8 text-neutral-500">
+            ICPC CU is a student community focused on competitive programming,
+            problem solving, and building a strong programming culture inside
+            FCAI Cairo University.
+          </p>
+
+          <p class="mt-5 text-base leading-8 text-neutral-500">
+            Through structured levels, sessions, contests, and continuous
+            practice, members can develop their problem solving skills and
+            compete together.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="levels" class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div
+        class="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"
+      >
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400"
+          >
+            Roadmap
+          </p>
+
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+            Choose your level.
+          </h2>
+        </div>
+
+        <p class="max-w-md text-sm leading-6 text-neutral-500">
+          A structured path from programming fundamentals to advanced
+          competitive programming.
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <a
+          href="{% url 'app:levels-show' 'level-0' %}"
+          class="group rounded-2xl border border-neutral-200 bg-white p-6 transition duration-200 hover:-translate-y-1 hover:border-[#2b6aad]/40 hover:shadow-lg hover:shadow-[#2b6aad]/5"
+        >
+          <div class="flex items-center justify-between">
+            <span
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#2b6aad]/10 text-sm font-black text-[#2b6aad]"
+            >
+              0
+            </span>
+
+            <i
+              class="fa-solid fa-arrow-right text-sm text-neutral-300 transition group-hover:translate-x-1 group-hover:text-[#2b6aad]"
+            ></i>
+          </div>
+
+          <h3 class="mt-8 text-xl font-bold">Level 0</h3>
+
+          <p class="mt-2 text-sm text-neutral-500">Fundamentals</p>
+
+          <p class="mt-5 text-sm leading-6 text-neutral-500">
+            Programming basics and the foundations needed to start solving
+            competitive programming problems.
+          </p>
+
+          <div class="mt-8 border-t border-neutral-100 pt-4">
+            <span class="text-xs font-semibold text-[#2b6aad]">
+              START HERE
+            </span>
+          </div>
+        </a>
+
+        <a
+          href="{% url 'app:levels-show' 'level-1' %}"
+          class="group rounded-2xl border border-neutral-200 bg-white p-6 transition duration-200 hover:-translate-y-1 hover:border-[#ad281c]/40 hover:shadow-lg hover:shadow-[#ad281c]/5"
+        >
+          <div class="flex items-center justify-between">
+            <span
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ad281c]/10 text-sm font-black text-[#ad281c]"
+            >
+              1
+            </span>
+
+            <i
+              class="fa-solid fa-arrow-right text-sm text-neutral-300 transition group-hover:translate-x-1 group-hover:text-[#ad281c]"
+            ></i>
+          </div>
+
+          <h3 class="mt-8 text-xl font-bold">Level 1</h3>
+
+          <p class="mt-2 text-sm text-neutral-500">Problem Solving</p>
+
+          <p class="mt-5 text-sm leading-6 text-neutral-500">
+            Core problem solving techniques, algorithms, and data structures for
+            competitive programming.
+          </p>
+
+          <div class="mt-8 border-t border-neutral-100 pt-4">
+            <span class="text-xs font-semibold text-[#ad281c]">
+              KEEP GOING
+            </span>
+          </div>
+        </a>
+
+        <a
+          href="{% url 'app:levels-show' 'level-2' %}"
+          class="group rounded-2xl border border-neutral-200 bg-white p-6 transition duration-200 hover:-translate-y-1 hover:border-[#f7ab2f]/50 hover:shadow-lg hover:shadow-[#f7ab2f]/10"
+        >
+          <div class="flex items-center justify-between">
+            <span
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f7ab2f]/15 text-sm font-black text-[#b77900]"
+            >
+              2
+            </span>
+
+            <i
+              class="fa-solid fa-arrow-right text-sm text-neutral-300 transition group-hover:translate-x-1 group-hover:text-[#b77900]"
+            ></i>
+          </div>
+
+          <h3 class="mt-8 text-xl font-bold">Level 2</h3>
+
+          <p class="mt-2 text-sm text-neutral-500">Advanced</p>
+
+          <p class="mt-5 text-sm leading-6 text-neutral-500">
+            Advanced algorithms and deeper competitive programming topics for
+            stronger problem solvers.
+          </p>
+
+          <div class="mt-8 border-t border-neutral-100 pt-4">
+            <span class="text-xs font-semibold text-[#b77900]">
+              GO DEEPER
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div
+        class="rounded-3xl border border-neutral-200 bg-neutral-50 p-7 sm:p-10"
+      >
+        <div
+          class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
+        >
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-green-500"></span>
+
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-neutral-500"
+              >
+                Current Wave
+              </span>
+            </div>
+            <h2 class="mt-4 text-3xl font-black tracking-tight">
+              {{ current_wave.title|default:"There's no wave Right now" }}
+            </h2>
+
+            <p class="mt-3 max-w-xl text-sm leading-7 text-neutral-500">
+              {{ current_wave.description|default:"Follow the current community roadmap, sessions, and activities throughout the season." }}
+            </p>
+          </div>
+          <a
+            href="{% url 'app:waves-show' current_wave.slug %}"
+            class="inline-flex w-fit items-center gap-3 rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
+          >
+            View Wave
+
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div class="mb-10">
+        <p
+          class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400"
+        >
+          Up Next
+        </p>
+
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+          Next Session
+        </h2>
+      </div>
+
+      <div
+        class="grid overflow-hidden rounded-2xl border border-neutral-200 lg:grid-cols-[1fr_auto]"
+      >
+        <div class="p-7 sm:p-10">
+          <div class="flex flex-wrap items-center gap-3">
+            <span
+              class="rounded-full bg-[#2b6aad]/10 px-3 py-1 text-xs font-bold text-[#2b6aad]"
+            >
+              LEVEL {{ next_session.level.level_number }}
+            </span>
+          </div>
+
+          <h3 class="mt-5 text-2xl font-black">{{ next_session.title }}</h3>
+
+          <p class="mt-3 max-w-2xl text-sm leading-7 text-neutral-500">
+            {{ next_session.description|default:"" }}
+          </p>
+        </div>
+
+        <div
+          class="border-t border-neutral-200 bg-neutral-50 p-7 lg:border-l lg:border-t-0 sm:p-10"
+        >
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-neutral-400"
+          >
+            Date
+          </p>
+
+          <p class="mt-3 text-lg font-bold">October 6, 2026</p>
+
+          <p class="mt-1 text-sm text-neutral-500">06:00 PM</p>
+
+          <a
+            href="{% url 'app:sessions-show' next_session.slug %}"
+            class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-neutral-950"
+          >
+            Session Details
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if request.user.is_unauthenticated %}
+  <section>
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-neutral-950 px-7 py-14 text-white sm:px-12"
+      >
+        <div class="relative z-10 max-w-2xl">
+          <p
+            class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400"
+          >
+            Join the community
+          </p>
+
+          <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+            Ready to start solving?
+          </h2>
+
+          <p class="mt-4 text-sm leading-7 text-neutral-400">
+            Join ICPC CU and take your problem solving journey to the next
+            level.
+          </p>
+
+          <a
+            href="{% url 'auth:login' %}"
+            class="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-100"
+          >
+            Join Community
+
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div
+          class="absolute -right-20 -top-20 h-64 w-64 rounded-full border border-white/10"
+        ></div>
+        <div
+          class="absolute -right-10 -top-10 h-44 w-44 rounded-full border border-white/10"
+        ></div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</main>
+{% endblock %}

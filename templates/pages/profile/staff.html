@@ -1,0 +1,18 @@
+{% extends "layouts/staff-layout.html" %}
+{% block title %}{{ role }} Profile | ICPC FCAI CU{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-3xl px-5 py-16 lg:py-24">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#2b6aad]">{{ role }}</p>
+    <h1 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">{{ request.user.full_name|default:request.user.username }}</h1>
+    <p class="mt-1 text-sm text-neutral-400">@{{ request.user.username }}{% if request.user.email %} · {{ request.user.email }}{% endif %}</p>
+    {% if profile.bio %}<p class="mt-6 text-base leading-8 text-neutral-500">{{ profile.bio }}</p>{% endif %}
+
+    <dl class="mt-8 divide-y divide-neutral-100 rounded-2xl border border-neutral-200 text-sm">
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Status</dt><dd class="font-semibold">{% if profile.is_active %}Active{% else %}Inactive{% endif %}</dd></div>
+      {% if profile.codeforces_handle %}<div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Codeforces</dt><dd class="font-semibold">{{ profile.codeforces_handle }}</dd></div>{% endif %}
+      {% if profile.vjudge_handle %}<div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Vjudge</dt><dd class="font-semibold">{{ profile.vjudge_handle }}</dd></div>{% endif %}
+    </dl>
+  </section>
+</main>
+{% endblock %}

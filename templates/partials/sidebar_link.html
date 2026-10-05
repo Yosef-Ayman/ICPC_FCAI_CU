@@ -1,0 +1,8 @@
+{% with cur=request.resolver_match.url_name names=names|default:url_name %}
+{% url 'app:'|add:url_name as href %}
+<a href="{{ href }}"
+   class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition {% if cur and cur in names %}bg-neutral-950 font-semibold text-white{% else %}font-medium text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950{% endif %}">
+  <i class="fa-solid {{ icon }} w-4 text-center text-xs {% if cur and cur in names %}text-white{% else %}text-neutral-400{% endif %}"></i>
+  {{ label }}
+</a>
+{% endwith %}

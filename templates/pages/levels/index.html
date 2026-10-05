@@ -1,0 +1,14 @@
+{% extends "layouts/guest-layout.html" %}
+{% block title %}Levels | ICPC FCAI CU{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#2b6aad]">Roadmap</p>
+    <h1 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Levels</h1>
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
+      {% for level in levels %}{% include "partials/level_card.html" %}
+      {% empty %}<p class="text-sm text-neutral-500">No levels yet.</p>{% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}

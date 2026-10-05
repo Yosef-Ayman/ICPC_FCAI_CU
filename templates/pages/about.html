@@ -1,0 +1,823 @@
+{% extends "layouts/guest-layout.html" %} {% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="relative overflow-hidden border-b border-neutral-200">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-40"
+      style="
+        background-image:
+          linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+          linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: linear-gradient(to bottom, black, transparent);
+      "
+    ></div>
+
+    <div class="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <div class="grid items-center gap-14 lg:grid-cols-[1fr_0.85fr]">
+        <div>
+          <div class="mb-8 flex items-center gap-3">
+            <span class="h-px w-10 bg-neutral-950"></span>
+
+            <span
+              class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-500"
+            >
+              About ICPC FCAI-CU
+            </span>
+          </div>
+
+          <h1
+            class="max-w-4xl text-5xl font-black leading-[0.94] tracking-[-0.05em] sm:text-6xl lg:text-7xl"
+          >
+            We don't just
+            <span class="relative inline-block text-[#2b6aad]">
+              solve.
+
+              <span
+                class="absolute -top-9 -left-4 h-3.5 w-3.5 rounded-full bg-[#2b6aad]"
+              ></span>
+              <span
+                class="absolute -top-12 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-[#ad281c]"
+              ></span>
+              <span
+                class="absolute -top-7 -right-4 h-3 w-3 rounded-full bg-[#f7ab2f]"
+              ></span>
+            </span>
+
+            <br />
+
+            <span class="text-neutral-400"> We build problem solvers. </span>
+          </h1>
+
+          <div class="mt-9 max-w-2xl border-l-2 border-[#2b6aad] pl-6">
+            <p class="text-lg leading-8 text-neutral-700">
+              ICPC FCAI-CU is the competitive programming community of the
+              Faculty of Computers and Artificial Intelligence, Cairo
+              University.
+            </p>
+
+            <p class="mt-4 text-sm leading-7 text-neutral-500">
+              A community built around learning, problem solving, competition,
+              collaboration, and passing knowledge from one generation to the
+              next.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div
+            class="absolute -left-5 -top-5 h-20 w-20 border-l border-t border-[#2b6aad]"
+          ></div>
+
+          <div class="overflow-hidden border border-neutral-200 bg-neutral-100">
+            <img
+              src="/static/images/about/community.jpg"
+              alt="ICPC FCAI-CU community"
+              class="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:grayscale-0"
+            />
+          </div>
+
+          <div class="absolute -bottom-5 -right-5 bg-white px-5 py-4 shadow-xl">
+            <p
+              class="text-xs font-bold uppercase tracking-widest text-neutral-400"
+            >
+              FCAI · Cairo University
+            </p>
+
+            <p class="mt-1 text-sm font-bold">
+              Built by students. For students.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-24 grid border-t border-neutral-200 sm:grid-cols-3">
+        <div
+          class="border-b border-neutral-200 py-7 sm:border-b-0 sm:border-r sm:pr-8"
+        >
+          <p class="text-4xl font-black">1000+</p>
+          <p
+            class="mt-2 text-xs font-semibold uppercase tracking-widest text-neutral-400"
+          >
+            Trainees
+          </p>
+        </div>
+
+        <div
+          class="border-b border-neutral-200 py-7 sm:border-b-0 sm:px-8 sm:border-r"
+        >
+          <p class="text-4xl font-black">200+</p>
+          <p
+            class="mt-2 text-xs font-semibold uppercase tracking-widest text-neutral-400"
+          >
+            Teams
+          </p>
+        </div>
+
+        <div class="py-7 sm:pl-8">
+          <p class="text-4xl font-black">15+</p>
+          <p
+            class="mt-2 text-xs font-semibold uppercase tracking-widest text-neutral-400"
+          >
+            Medals
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="grid gap-16 lg:grid-cols-[0.75fr_1.25fr]">
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-[0.25em] text-[#2b6aad]"
+          >
+            What we do
+          </p>
+
+          <h2
+            class="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl"
+          >
+            Learn.
+            <br />
+            Practice.
+            <br />
+            Compete.
+          </h2>
+
+          <p class="mt-6 max-w-sm text-sm leading-7 text-neutral-500">
+            Competitive programming is more than algorithms. It's about learning
+            how to think, communicate, and solve problems under pressure.
+          </p>
+        </div>
+        <div>
+          <div class="relative mb-12">
+            <div class="overflow-hidden border border-neutral-200">
+              <img
+                src="/static/images/about/session.jpg"
+                alt="ICPC FCAI-CU training session"
+                class="aspect-[16/7] w-full object-cover grayscale transition duration-700 hover:grayscale-0"
+              />
+            </div>
+
+            <div class="absolute bottom-4 left-4 bg-white px-4 py-2">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest text-neutral-500"
+              >
+                Training Session
+              </span>
+            </div>
+          </div>
+
+          <p class="max-w-3xl text-xl leading-9 text-neutral-700">
+            Our community provides a structured environment where students can
+            develop their programming and problem-solving skills, regardless of
+            where they start.
+          </p>
+
+          <div class="mt-14 grid border-t border-neutral-200 sm:grid-cols-2">
+            <div class="border-b border-neutral-200 py-8 sm:border-r sm:pr-8">
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-[#2b6aad]"> 01 </span>
+
+                <h3 class="text-lg font-bold">Structured Training</h3>
+              </div>
+
+              <p class="mt-4 text-sm leading-7 text-neutral-500">
+                Training paths designed around different skill levels, from
+                programming fundamentals to advanced algorithms.
+              </p>
+            </div>
+
+            <div class="border-b border-neutral-200 py-8 sm:pl-8">
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-[#ad281c]"> 02 </span>
+
+                <h3 class="text-lg font-bold">Problem Solving</h3>
+              </div>
+
+              <p class="mt-4 text-sm leading-7 text-neutral-500">
+                Regular practice, upsolving, contests, and discussions focused
+                on developing algorithmic thinking.
+              </p>
+            </div>
+
+            <div class="border-b border-neutral-200 py-8 sm:border-r sm:pr-8">
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-[#f7ab2f]"> 03 </span>
+
+                <h3 class="text-lg font-bold">Competition</h3>
+              </div>
+
+              <p class="mt-4 text-sm leading-7 text-neutral-500">
+                Preparing students for competitive programming contests at
+                university, national, regional, and international levels.
+              </p>
+            </div>
+
+            <div class="border-b border-neutral-200 py-8 sm:pl-8">
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-neutral-400"> 04 </span>
+
+                <h3 class="text-lg font-bold">Community</h3>
+              </div>
+
+              <p class="mt-4 text-sm leading-7 text-neutral-500">
+                A culture where experienced members help newer generations
+                learn, improve, and eventually give back.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="mb-14 max-w-2xl">
+        <p
+          class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-400"
+        >
+          The journey
+        </p>
+
+        <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+          Everyone starts somewhere.
+        </h2>
+
+        <p class="mt-5 text-base leading-8 text-neutral-500">
+          Our training structure takes students from their first steps in
+          programming to advanced competitive programming.
+        </p>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-3">
+        <a
+          href="{% url 'app:levels-show' 'level-0' %}"
+          class="group relative overflow-hidden border border-neutral-200 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+        >
+          <div
+            class="absolute right-0 top-0 h-36 w-36 translate-x-14 -translate-y-14 rounded-full bg-[#2b6aad]/10 transition duration-500 group-hover:scale-150"
+          ></div>
+
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="text-7xl font-black text-[#2b6aad]"> 0 </span>
+
+              <i
+                class="fa-solid fa-arrow-up-right-from-square text-sm text-neutral-300 transition group-hover:text-[#2b6aad]"
+              ></i>
+            </div>
+
+            <h3 class="mt-14 text-2xl font-black">Start here.</h3>
+
+            <p class="mt-3 text-sm leading-7 text-neutral-500">
+              Programming fundamentals and the first steps toward thinking like
+              a problem solver.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="{% url 'app:levels-show' 'level-1' %}"
+          class="group relative overflow-hidden border border-neutral-200 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+        >
+          <div
+            class="absolute right-0 top-0 h-36 w-36 translate-x-14 -translate-y-14 rounded-full bg-[#ad281c]/10 transition duration-500 group-hover:scale-150"
+          ></div>
+
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="text-7xl font-black text-[#ad281c]"> 1 </span>
+
+              <i
+                class="fa-solid fa-arrow-up-right-from-square text-sm text-neutral-300 transition group-hover:text-[#ad281c]"
+              ></i>
+            </div>
+
+            <h3 class="mt-14 text-2xl font-black">Build your skills.</h3>
+
+            <p class="mt-3 text-sm leading-7 text-neutral-500">
+              Algorithms, data structures, and techniques needed to approach
+              increasingly difficult problems.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="{% url 'app:levels-show' 'level-2' %}"
+          class="group relative overflow-hidden border border-neutral-200 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+        >
+          <div
+            class="absolute right-0 top-0 h-36 w-36 translate-x-14 -translate-y-14 rounded-full bg-[#f7ab2f]/15 transition duration-500 group-hover:scale-150"
+          ></div>
+
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="text-7xl font-black text-[#b77900]"> 2 </span>
+
+              <i
+                class="fa-solid fa-arrow-up-right-from-square text-sm text-neutral-300 transition group-hover:text-[#b77900]"
+              ></i>
+            </div>
+
+            <h3 class="mt-14 text-2xl font-black">Go deeper.</h3>
+
+            <p class="mt-3 text-sm leading-7 text-neutral-500">
+              Advanced algorithms and deeper topics for students ready to push
+              their problem-solving abilities further.
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="relative overflow-hidden border-b border-neutral-200 bg-neutral-950 text-white"
+  >
+    <div class="pointer-events-none absolute inset-0">
+      <div
+        class="absolute left-1/2 top-1/2 h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5"
+      ></div>
+
+      <div
+        class="absolute left-1/2 top-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5"
+      ></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
+      <div class="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-[#f7ab2f]"></span>
+
+            <span
+              class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-500"
+            >
+              ECPC 2025
+            </span>
+          </div>
+
+          <h2
+            class="mt-6 text-5xl font-black leading-[0.92] tracking-[-0.04em] sm:text-6xl"
+          >
+            Tamora
+
+            <br />
+
+            <span class="text-[#f7ab2f]"> fel d2e2a 90. </span>
+          </h2>
+
+          <p class="mt-8 max-w-xl text-lg leading-8 text-neutral-400">
+            A team formed at the last moment. A contest that came down to the
+            wire. And a problem solved when every second mattered.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <div class="border border-white/10 px-5 py-4">
+              <p class="text-3xl font-black">#1</p>
+
+              <p
+                class="mt-1 text-[10px] font-bold uppercase tracking-widest text-neutral-500"
+              >
+                ECPC 2025
+              </p>
+            </div>
+
+            <div class="border border-white/10 px-5 py-4">
+              <p class="text-3xl font-black">ACPC</p>
+
+              <p
+                class="mt-1 text-[10px] font-bold uppercase tracking-widest text-neutral-500"
+              >
+                Qualified
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="overflow-hidden border border-white/10">
+            <img
+              src="/static/images/about/tamora.jpg"
+              alt="Tamora fel d2e2a 90 team"
+              class="aspect-[4/3] w-full object-cover grayscale transition duration-700 hover:grayscale-0"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-24 border-t border-white/10 pt-10">
+        <p
+          class="max-w-4xl text-2xl font-medium leading-10 text-neutral-300 sm:text-3xl"
+        >
+          Sometimes the difference between
+          <span class="text-white"> almost </span>
+          and
+          <span class="text-[#f7ab2f]"> first </span>
+          is measured in seconds.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="grid gap-16 lg:grid-cols-[0.75fr_1.25fr]">
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-400"
+          >
+            On the scoreboard
+          </p>
+
+          <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+            Built through years of competition.
+          </h2>
+        </div>
+
+        <div>
+          <div class="mb-12 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div class="overflow-hidden">
+              <img
+                src="/static/images/about/contest-01.jpg"
+                alt="ICPC FCAI-CU contest"
+                class="aspect-square w-full object-cover grayscale transition duration-500 hover:grayscale-0"
+              />
+            </div>
+
+            <div class="overflow-hidden">
+              <img
+                src="/static/images/about/contest-02.jpg"
+                alt="ICPC FCAI-CU team"
+                class="aspect-square w-full object-cover grayscale transition duration-500 hover:grayscale-0"
+              />
+            </div>
+
+            <div class="col-span-2 overflow-hidden sm:col-span-1">
+              <img
+                src="/static/images/about/contest-03.jpg"
+                alt="ICPC FCAI-CU competition"
+                class="aspect-square w-full object-cover grayscale transition duration-500 hover:grayscale-0"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-0">
+            <div class="group border-t border-neutral-200 py-8">
+              <div class="grid gap-6 sm:grid-cols-[100px_1fr]">
+                <div>
+                  <span
+                    class="text-3xl font-black text-neutral-300 transition group-hover:text-[#2b6aad]"
+                  >
+                    2023
+                  </span>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-bold">ECPC & ACPC</h3>
+
+                  <p class="mt-3 max-w-2xl text-sm leading-7 text-neutral-500">
+                    Strong performances across national and regional competitive
+                    programming competitions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="group border-t border-neutral-200 py-8">
+              <div class="grid gap-6 sm:grid-cols-[100px_1fr]">
+                <div>
+                  <span
+                    class="text-3xl font-black text-neutral-300 transition group-hover:text-[#ad281c]"
+                  >
+                    2022
+                  </span>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-bold">ECPC & ACPC</h3>
+
+                  <p class="mt-3 max-w-2xl text-sm leading-7 text-neutral-500">
+                    Another generation of FCAI-CU teams continued the
+                    community's competitive programming journey.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="group border-t border-neutral-200 py-8">
+              <div class="grid gap-6 sm:grid-cols-[100px_1fr]">
+                <div>
+                  <span
+                    class="text-3xl font-black text-neutral-300 transition group-hover:text-[#f7ab2f]"
+                  >
+                    2021
+                  </span>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-bold">
+                    National & Regional Competition
+                  </h3>
+
+                  <p class="mt-3 max-w-2xl text-sm leading-7 text-neutral-500">
+                    FCAI-CU teams continued to represent the university across
+                    major competitive programming contests.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="relative order-2 lg:order-1">
+          <div class="overflow-hidden border border-neutral-200">
+            <img
+              src="/static/images/about/acpc.jpg"
+              alt="FCAI-CU ACPC team"
+              class="aspect-[16/10] w-full object-cover grayscale transition duration-700 hover:grayscale-0"
+            />
+          </div>
+
+          <div
+            class="absolute -bottom-5 -right-5 bg-[#f7ab2f] px-6 py-5 text-neutral-950"
+          >
+            <p class="text-4xl font-black">6</p>
+
+            <p class="mt-1 text-[10px] font-bold uppercase tracking-widest">
+              ACPC Championships
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p
+            class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-400"
+          >
+            A milestone
+          </p>
+
+          <h2
+            class="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl"
+          >
+            A history of
+            <span class="text-[#ad281c]"> winning. </span>
+          </h2>
+
+          <p class="mt-6 text-base leading-8 text-neutral-500">
+            FCAI-CU has built a long competitive programming tradition, with
+            generations of teams competing nationally and regionally.
+          </p>
+
+          <div class="mt-8 border-l-2 border-[#f7ab2f] pl-5">
+            <p class="text-sm font-semibold leading-7 text-neutral-700">
+              The journey is bigger than one contest, one team, or one
+              generation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="mb-14 max-w-2xl">
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-[#2b6aad]">
+          The people
+        </p>
+
+        <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+          The community is the real story.
+        </h2>
+
+        <p class="mt-5 text-base leading-8 text-neutral-500">
+          Every generation leaves something behind for the next one.
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <div class="group">
+          <div class="overflow-hidden bg-neutral-100">
+            <img
+              src="/static/images/about/person-01.jpg"
+              alt="ICPC FCAI-CU member"
+              class="aspect-[4/5] w-full object-cover grayscale transition duration-700 group-hover:grayscale-0"
+            />
+          </div>
+
+          <div class="mt-5">
+            <h3 class="text-lg font-bold">Community Alumni</h3>
+
+            <p
+              class="mt-1 text-xs font-semibold uppercase tracking-widest text-[#2b6aad]"
+            >
+              Problem Solver
+            </p>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="overflow-hidden bg-neutral-100">
+            <img
+              src="/static/images/about/person-02.jpg"
+              alt="ICPC FCAI-CU member"
+              class="aspect-[4/5] w-full object-cover grayscale transition duration-700 group-hover:grayscale-0"
+            />
+          </div>
+
+          <div class="mt-5">
+            <h3 class="text-lg font-bold">Community Alumni</h3>
+
+            <p
+              class="mt-1 text-xs font-semibold uppercase tracking-widest text-[#ad281c]"
+            >
+              Coach · Mentor
+            </p>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="overflow-hidden bg-neutral-100">
+            <img
+              src="/static/images/about/person-03.jpg"
+              alt="ICPC FCAI-CU member"
+              class="aspect-[4/5] w-full object-cover grayscale transition duration-700 group-hover:grayscale-0"
+            />
+          </div>
+
+          <div class="mt-5">
+            <h3 class="text-lg font-bold">Community Alumni</h3>
+
+            <p
+              class="mt-1 text-xs font-semibold uppercase tracking-widest text-[#f7ab2f]"
+            >
+              Competitor
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="grid gap-16 lg:grid-cols-[0.7fr_1.3fr]">
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-400"
+          >
+            Hall of Fame
+          </p>
+
+          <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+            Generations
+            <br />
+            of builders.
+          </h2>
+        </div>
+
+        <div class="space-y-0">
+          <div class="border-t border-neutral-200 py-8">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="text-xl font-black">Coaches & Mentors</h3>
+
+                <p class="mt-3 max-w-xl text-sm leading-7 text-neutral-500">
+                  The people who built training systems, coached teams, prepared
+                  contests, and passed their experience forward.
+                </p>
+              </div>
+
+              <i
+                class="fa-solid fa-chalkboard-user text-xl text-neutral-300"
+              ></i>
+            </div>
+          </div>
+
+          <div class="border-t border-neutral-200 py-8">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="text-xl font-black">Contestants</h3>
+
+                <p class="mt-3 max-w-xl text-sm leading-7 text-neutral-500">
+                  Students who represented FCAI-CU in national, regional, and
+                  international competitive programming competitions.
+                </p>
+              </div>
+
+              <i class="fa-solid fa-trophy text-xl text-neutral-300"></i>
+            </div>
+          </div>
+
+          <div class="border-t border-neutral-200 py-8">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="text-xl font-black">Community Builders</h3>
+
+                <p class="mt-3 max-w-xl text-sm leading-7 text-neutral-500">
+                  Organizers, problem setters, team leads, and volunteers who
+                  keep the community moving.
+                </p>
+              </div>
+
+              <i class="fa-solid fa-people-group text-xl text-neutral-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="relative overflow-hidden bg-neutral-50 px-7 py-16 sm:px-12">
+        <div
+          class="pointer-events-none absolute right-0 top-0 h-72 w-72 translate-x-1/2 -translate-y-1/2 rounded-full border border-neutral-200"
+        ></div>
+
+        <div
+          class="pointer-events-none absolute right-16 top-16 h-40 w-40 rounded-full border border-neutral-200"
+        ></div>
+
+        <div class="relative max-w-4xl">
+          <p
+            class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-400"
+          >
+            Our philosophy
+          </p>
+
+          <h2
+            class="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-6xl"
+          >
+            Learn from someone.
+
+            <br />
+
+            <span class="text-[#2b6aad]"> Become someone. </span>
+          </h2>
+
+          <p class="mt-7 max-w-2xl text-base leading-8 text-neutral-500">
+            The goal isn't only to create better contestants. It's to create an
+            environment where knowledge keeps moving from one generation to the
+            next.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+      <div class="relative overflow-hidden">
+        <img
+          src="/static/images/about/community-final.jpg"
+          alt="ICPC FCAI-CU community"
+          class="h-[420px] w-full object-cover grayscale"
+        />
+
+        <div class="absolute inset-0 bg-black/55"></div>
+
+        <div
+          class="absolute inset-0 flex items-center justify-center px-6 text-center"
+        >
+          <div class="max-w-3xl text-white">
+            <p
+              class="text-xs font-bold uppercase tracking-[0.3em] text-white/60"
+            >
+              Your turn
+            </p>
+
+            <h2 class="mt-5 text-4xl font-black tracking-tight sm:text-6xl">
+              Your story starts here.
+            </h2>
+
+            <p class="mx-auto mt-5 max-w-xl text-sm leading-7 text-white/70">
+              Whether you're solving your first problem or preparing for your
+              next contest, there's a place for you in the community.
+            </p>
+
+            <a
+              href="{% url 'auth:login' %}"
+              class="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-100"
+            >
+              Join ICPC FCAI-CU
+
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

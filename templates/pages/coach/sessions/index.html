@@ -1,0 +1,49 @@
+{% extends "layouts/staff-layout.html" %}
+{% block title %}Sessions | Coach{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-6xl px-5 py-16 lg:py-24">
+    <div class="mt-10 flex items-end justify-between">
+      <h1 class="text-3xl font-black tracking-tight sm:text-4xl">Sessions</h1>
+      <a href="{% url 'app:coach-sessions-create' %}" class="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-semibold text-white hover:bg-neutral-800"><i class="fa-solid fa-plus text-xs"></i> New session</a>
+    </div>
+
+    <form method="get" class="mt-8 grid gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
+      <select name="wave" class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm">
+        <option value="">All waves</option>
+        {% for w in waves %}<option value="{{ w.slug }}" {% if wave_slug == w.slug %}selected{% endif %}>{{ w.title }}</option>{% endfor %}
+      </select>
+      <select name="level" class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm">
+        <option value="">All levels</option>
+        {% for l in levels %}<option value="{{ l.level_number }}" {% if level_number == l.level_number %}selected{% endif %}>Level {{ l.level_number }}</option>{% endfor %}
+      </select>
+      <select name="when" class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm">
+        <option value="">Any time</option>
+        <option value="upcoming" {% if when == 'upcoming' %}selected{% endif %}>Upcoming</option>
+        <option value="past" {% if when == 'past' %}selected{% endif %}>Past</option>
+      </select>
+      <button class="rounded-full bg-neutral-950 px-6 py-2.5 text-sm font-semibold text-white hover:bg-neutral-800">Filter</button>
+    </form>
+
+    <div class="mt-6 divide-y divide-neutral-100 rounded-2xl border border-neutral-200">
+      {% for s in page %}
+      <div class="flex flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="{% url 'app:sessions-show' s.slug %}" class="text-sm font-semibold hover:underline">{{ s.title }}</a>
+            {% if s.starts_at > now %}<span class="rounded-full bg-[#2b6aad]/10 px-2.5 py-0.5 text-xs font-bold text-[#2b6aad]">Upcoming</span>
+            {% elif s.recorded == 0 %}<span class="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-bold text-amber-700">No attendance</span>{% endif %}
+          </div>
+          <p class="mt-0.5 text-xs text-neutral-400">{% if s.wave %}{{ s.wave.title }} · {% endif %}{% if s.level %}Level {{ s.level.level_number }} · {% endif %}{{ s.starts_at|date:"M j, Y · h:i A" }}{% if s.recorded %} · {{ s.attended }}/{{ s.recorded }} present{% endif %}</p>
+        </div>
+        <div class="flex gap-4 text-sm font-semibold">
+          <a href="{% url 'app:attendance-index' s.slug %}" class="hover:underline">Attendance</a>
+          <a href="{% url 'app:coach-sessions-edit' s.slug %}" class="hover:underline">Edit</a>
+        </div>
+      </div>
+      {% empty %}<p class="p-10 text-center text-sm text-neutral-500">No sessions found.</p>{% endfor %}
+    </div>
+    {% include "partials/pagination.html" %}
+  </section>
+</main>
+{% endblock %}

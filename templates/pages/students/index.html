@@ -1,0 +1,209 @@
+{% extends "layouts/guest-layout.html" %}
+
+{% block title %}Students | ICPC FCAI CU{% endblock %}
+
+{% block content %}
+<main class="bg-white text-neutral-950">
+
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+
+      <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-[0.25em] text-[#2b6aad]">
+            Community
+          </p>
+
+          <h1 class="mt-5 text-4xl font-black tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+            Meet the
+            <span class="text-neutral-400">community.</span>
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-base leading-7 text-neutral-500">
+            Explore the students learning, competing, and growing
+            through ICPC FCAI CU.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
+
+    {% if students %}
+
+      <div class="divide-y divide-neutral-200 border-y border-neutral-200">
+
+        {% for student in students %}
+
+          <a
+            href="{% url 'app:students-show' student.user.username %}"
+            class="group block py-7 transition"
+          >
+
+            <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+
+              <!-- Identity -->
+              <div class="flex min-w-0 items-center gap-5">
+
+                <div
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-neutral-950 text-lg font-black text-white transition duration-200 group-hover:bg-[#2b6aad]"
+                >
+                  {{ student.user.first_name|default:student.user.username|slice:":1"|upper }}
+                </div>
+
+                <div class="min-w-0">
+
+                  <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+
+                    <h2 class="truncate text-lg font-black tracking-tight">
+                      {{ student.user.full_name|default:student.user.username }}
+                    </h2>
+
+                    <span class="text-sm text-neutral-400">
+                      @{{ student.user.username }}
+                    </span>
+
+                  </div>
+
+                  <div class="mt-3 flex flex-wrap items-center gap-2">
+
+                    {% if student.level.level_number == 0 %}
+                      <span class="rounded-full bg-[#2b6aad]/10 px-3 py-1 text-xs font-bold text-[#2b6aad]">
+                        Level 0
+                      </span>
+                    {% elif student.level.level_number == 1 %}
+                      <span class="rounded-full bg-[#ad281c]/10 px-3 py-1 text-xs font-bold text-[#ad281c]">
+                        Level 1
+                      </span>
+                    {% elif student.level.level_number == 2 %}
+                      <span class="rounded-full bg-[#f7ab2f]/15 px-3 py-1 text-xs font-bold text-[#a66b00]">
+                        Level 2
+                      </span>
+                    {% else %}
+                      <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-bold text-neutral-600">
+                        Level {{ student.level.level_number }}
+                      </span>
+                    {% endif %}
+
+                    <span class="text-xs text-neutral-400">
+                      {{ student.faculty_year }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- Meta -->
+              <div class="flex items-center gap-6 sm:shrink-0">
+
+                {% if student.codeforces_handle %}
+                  <span class="hidden text-xs font-semibold text-neutral-400 md:block">
+                    Codeforces
+                  </span>
+                {% endif %}
+
+                {% if student.vjudge_handle %}
+                  <span class="hidden text-xs font-semibold text-neutral-400 md:block">
+                    VJudge
+                  </span>
+                {% endif %}
+
+                <span class="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-400 transition group-hover:border-neutral-950 group-hover:text-neutral-950">
+                  <i class="fa-solid fa-arrow-right text-xs"></i>
+                </span>
+
+              </div>
+
+            </div>
+
+          </a>
+
+        {% endfor %}
+
+      </div>
+
+
+      <!-- Pagination -->
+      {% if paginator.num_pages > 1 %}
+
+        <div class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+
+          <p class="text-sm text-neutral-400">
+            Showing
+            <span class="font-semibold text-neutral-700">
+              {{ page.start_index }}
+            </span>
+            —
+            <span class="font-semibold text-neutral-700">
+              {{ page.end_index }}
+            </span>
+            of
+            <span class="font-semibold text-neutral-700">
+              {{ paginator.count }}
+            </span>
+          </p>
+
+          <div class="flex items-center gap-2">
+
+            {% if page.has_previous %}
+              <a
+                href="?page={{ page.previous_page_number }}&limit={{ limit }}"
+                class="inline-flex h-10 items-center gap-2 rounded-full border border-neutral-200 px-4 text-xs font-bold text-neutral-600 transition hover:border-neutral-950 hover:text-neutral-950"
+              >
+                <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                Previous
+              </a>
+            {% endif %}
+
+            <span class="flex h-10 items-center rounded-full bg-neutral-950 px-4 text-xs font-bold text-white">
+              {{ page.number }} / {{ paginator.num_pages }}
+            </span>
+
+            {% if page.has_next %}
+              <a
+                href="?page={{ page.next_page_number }}&limit={{ limit }}"
+                class="inline-flex h-10 items-center gap-2 rounded-full border border-neutral-200 px-4 text-xs font-bold text-neutral-600 transition hover:border-neutral-950 hover:text-neutral-950"
+              >
+                Next
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            {% endif %}
+
+          </div>
+
+        </div>
+
+      {% endif %}
+
+
+    {% else %}
+
+      <div class="border-y border-neutral-200 py-20 text-center">
+
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-100 text-neutral-400">
+          <i class="fa-solid fa-users"></i>
+        </div>
+
+        <h2 class="mt-5 text-lg font-black">
+          No students yet
+        </h2>
+
+        <p class="mt-2 text-sm text-neutral-500">
+          The community directory is currently empty.
+        </p>
+
+      </div>
+
+    {% endif %}
+
+  </section>
+
+</main>
+{% endblock %}

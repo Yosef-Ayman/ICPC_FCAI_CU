@@ -1,0 +1,46 @@
+{% extends "layouts/guest-layout.html" %}
+{% block title %}Join Community | ICPC FCAI CU{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-2xl px-5 py-16 lg:py-24">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#2b6aad]">Join</p>
+    <h1 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Create your account</h1>
+    <p class="mt-3 text-sm leading-6 text-neutral-500">Register as a student and start your competitive programming journey.</p>
+
+    <form method="post" class="mt-10 space-y-5" novalidate>
+      {% csrf_token %}
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "partials/field.html" with name="first_name" label="First name" value=form.first_name error=errors.first_name %}
+        {% include "partials/field.html" with name="last_name" label="Last name" value=form.last_name error=errors.last_name %}
+      </div>
+      {% include "partials/field.html" with name="username" label="Username" value=form.username error=errors.username %}
+      {% include "partials/field.html" with name="email" label="Email (optional)" type="email" value=form.email error=errors.email %}
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "partials/field.html" with name="university_id" label="University ID" value=form.university_id error=errors.university_id %}
+        <div>
+          <label for="id_faculty_year" class="block text-sm font-semibold text-neutral-800">Faculty year</label>
+          <select id="id_faculty_year" name="faculty_year" class="mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-[#2b6aad] focus:ring-4 focus:ring-[#2b6aad]/10 {% if errors.faculty_year %}border-red-300 bg-red-50{% else %}border-neutral-300 bg-white{% endif %}">
+            <option value="">Select year</option>
+            {% for y in "1234" %}<option value="{{ y }}" {% if form.faculty_year == y %}selected{% endif %}>Year {{ y }}</option>{% endfor %}
+          </select>
+          {% if errors.faculty_year %}<p class="mt-1.5 text-xs text-red-600">{{ errors.faculty_year }}</p>{% endif %}
+        </div>
+      </div>
+      {% include "partials/field.html" with name="phone" label="Phone (optional)" value=form.phone error=errors.phone %}
+      {% include "partials/field.html" with name="discord_handle" label="Discord handle" value=form.discord_handle error=errors.discord_handle %}
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "partials/field.html" with name="codeforces_handle" label="Codeforces handle (optional)" value=form.codeforces_handle error=errors.codeforces_handle %}
+        {% include "partials/field.html" with name="vjudge_handle" label="Vjudge handle (optional)" value=form.vjudge_handle error=errors.vjudge_handle %}
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        {% include "partials/field.html" with name="password" label="Password" type="password" error=errors.password %}
+        {% include "partials/field.html" with name="password_confirm" label="Confirm password" type="password" error=errors.password_confirm %}
+      </div>
+      <button type="submit" class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800">
+        Create account <i class="fa-solid fa-arrow-right text-xs"></i>
+      </button>
+      <p class="text-center text-sm text-neutral-500">Already have an account? <a href="{% url 'auth:login' %}" class="font-semibold text-neutral-950 hover:underline">Login</a></p>
+    </form>
+  </section>
+</main>
+{% endblock %}

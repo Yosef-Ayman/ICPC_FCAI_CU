@@ -1,0 +1,40 @@
+{% extends "layouts/staff-layout.html" %}
+{% block title %}Students | Coach{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-6xl px-5 py-16 lg:py-24">
+    <h1 class="mt-10 text-3xl font-black tracking-tight sm:text-4xl">Students</h1>
+
+    <form method="get" class="mt-8 grid gap-3 sm:grid-cols-[1fr_auto_auto_auto]">
+      <input name="q" value="{{ q }}" placeholder="Search name, username, university ID, handles"
+             class="rounded-xl border border-neutral-300 px-4 py-2.5 text-sm outline-none focus:border-[#2b6aad] focus:ring-4 focus:ring-[#2b6aad]/10">
+      <select name="level" class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm">
+        <option value="">All levels</option>
+        {% for l in levels %}<option value="{{ l.level_number }}" {% if level_number == l.level_number %}selected{% endif %}>Level {{ l.level_number }}</option>{% endfor %}
+      </select>
+      <select name="status" class="rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm">
+        <option value="active" {% if status == 'active' %}selected{% endif %}>Active</option>
+        <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>Inactive</option>
+        <option value="all" {% if status == 'all' %}selected{% endif %}>All</option>
+      </select>
+      <button class="rounded-full bg-neutral-950 px-6 py-2.5 text-sm font-semibold text-white hover:bg-neutral-800">Filter</button>
+    </form>
+
+    <div class="mt-6 divide-y divide-neutral-100 rounded-2xl border border-neutral-200">
+      {% for s in page %}
+      <a href="{% url 'app:coach-students-show' s.user.username %}" class="flex items-center justify-between px-6 py-4 transition hover:bg-neutral-50">
+        <div>
+          <div class="flex items-center gap-2">
+            <p class="text-sm font-semibold">{{ s.user.full_name|default:s.user.username }}</p>
+            {% if not s.is_active or not s.user.is_active %}<span class="rounded-full bg-red-50 px-2.5 py-0.5 text-xs font-bold text-red-700">Inactive</span>{% endif %}
+          </div>
+          <p class="mt-0.5 text-xs text-neutral-400">@{{ s.user.username }} · {{ s.university_id }} · Year {{ s.faculty_year }}</p>
+        </div>
+        <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-bold">Level {{ s.level.level_number }}</span>
+      </a>
+      {% empty %}<p class="p-10 text-center text-sm text-neutral-500">No students found.</p>{% endfor %}
+    </div>
+    {% include "partials/pagination.html" %}
+  </section>
+</main>
+{% endblock %}

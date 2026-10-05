@@ -1,0 +1,50 @@
+{% extends "layouts/panel-base.html" %}
+
+{% block title %}Staff | ICPC FCAI CU{% endblock %}
+{% block accent %}#ad281c{% endblock %}
+{% block panel_label %}Staff{% endblock %}
+
+{% block sidebar %}
+  <div class="space-y-1">
+    <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Me</p>
+    {% if 'coach' in user_roles %}{% include "partials/sidebar_link.html" with url_name="coach-profile" label="Coach profile" icon="fa-user-tie" %}{% endif %}
+    {% if 'mentor' in user_roles %}{% include "partials/sidebar_link.html" with url_name="mentor-profile" label="Mentor profile" icon="fa-user-graduate" %}{% endif %}
+    {% if 'support' in user_roles %}{% include "partials/sidebar_link.html" with url_name="support-profile" label="Support profile" icon="fa-headset" %}{% endif %}
+    {% if 'media' in user_roles %}{% include "partials/sidebar_link.html" with url_name="media-profile" label="Media profile" icon="fa-camera" %}{% endif %}
+    {% if not user_roles %}<p class="px-3 py-2 text-xs text-neutral-400">No role profile yet.</p>{% endif %}
+  </div>
+
+  {% if is_staff_member %}
+  <div class="space-y-1">
+    <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Training</p>
+    {% include "partials/sidebar_link.html" with url_name="sessions-index" names="sessions-index,sessions-show,attendance-index" label="Sessions & attendance" icon="fa-clipboard-check" %}
+    {% include "partials/sidebar_link.html" with url_name="students-index" names="students-index,students-show" label="Students directory" icon="fa-users" %}
+  </div>
+  {% endif %}
+
+  {% if is_coach %}
+  <div class="space-y-1">
+    <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Coach panel</p>
+    {% include "partials/sidebar_link.html" with url_name="coach-dashboard" label="Dashboard" icon="fa-gauge" %}
+    {% include "partials/sidebar_link.html" with url_name="coach-waves" names="coach-waves,coach-waves-create,coach-waves-edit" label="Waves" icon="fa-water" %}
+    {% include "partials/sidebar_link.html" with url_name="coach-sessions" names="coach-sessions,coach-sessions-create,coach-sessions-edit" label="Sessions" icon="fa-calendar-days" %}
+    {% include "partials/sidebar_link.html" with url_name="coach-students" names="coach-students,coach-students-show" label="Students" icon="fa-user-graduate" %}
+    {% include "partials/sidebar_link.html" with url_name="coach-report-attendance" label="Attendance report" icon="fa-chart-column" %}
+  </div>
+  {% endif %}
+
+  {% if is_manager %}
+  <div class="space-y-1">
+    <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Administration</p>
+    {% include "partials/sidebar_link.html" with url_name="manage-staff-index" names="manage-staff-index,manage-staff-create,manage-staff-edit" label="Staff members" icon="fa-id-badge" %}
+    {% comment %} {% include "partials/sidebar_link.html" with url_name="manage-lookups" label="Positions & specializations" icon="fa-tags" %} {% endcomment %}
+  </div>
+  {% endif %}
+
+  <div class="space-y-1">
+    <p class="px-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Community</p>
+    {% include "partials/sidebar_link.html" with url_name="team-index" label="Team" icon="fa-people-group" %}
+    {% include "partials/sidebar_link.html" with url_name="levels-index" names="levels-index,levels-show" label="Levels" icon="fa-stairs" %}
+    {% include "partials/sidebar_link.html" with url_name="waves-index" names="waves-index,waves-show" label="Waves (public)" icon="fa-water" %}
+  </div>
+{% endblock %}

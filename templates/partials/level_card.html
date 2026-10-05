@@ -1,0 +1,12 @@
+{% load ui %}
+{% with color=level.level_number|level_color %}
+<a href="{% url 'app:levels-show' level.slug %}" class="group rounded-2xl border border-neutral-200 bg-white p-6 transition duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-neutral-200/60">
+  <div class="flex items-center justify-between">
+    <span class="flex h-10 w-10 items-center justify-center rounded-xl text-sm font-black" style="color:{{ color }};background:{{ color }}1a">{{ level.level_number }}</span>
+    <i class="fa-solid fa-arrow-right text-sm text-neutral-300 transition group-hover:translate-x-1"></i>
+  </div>
+  <h3 class="mt-8 text-xl font-bold">Level {{ level.level_number }}</h3>
+  <p class="mt-2 text-sm text-neutral-500">{{ level.title }}</p>
+  <p class="mt-5 text-sm leading-6 text-neutral-500">{{ level.description|default:""|truncatewords:25 }}</p>
+</a>
+{% endwith %}

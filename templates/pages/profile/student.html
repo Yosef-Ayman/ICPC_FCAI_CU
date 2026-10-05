@@ -1,0 +1,26 @@
+{% extends "layouts/student-layout.html" %}
+{% block title %}My Profile | ICPC FCAI CU{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-3xl px-5 py-16 lg:py-24">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#2b6aad]">Student</p>
+    <h1 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">{{ request.user.full_name|default:request.user.username }}</h1>
+    <p class="mt-1 text-sm text-neutral-400">@{{ request.user.username }}</p>
+
+    <dl class="mt-8 divide-y divide-neutral-100 rounded-2xl border border-neutral-200 text-sm">
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">University ID</dt><dd class="font-semibold">{{ profile.university_id }}</dd></div>
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Faculty year</dt><dd class="font-semibold">{{ profile.faculty_year }}</dd></div>
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Phone</dt><dd class="font-semibold">{{ profile.phone|default:"—" }}</dd></div>
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Discord</dt><dd class="font-semibold">{{ profile.discord_handle }}</dd></div>
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Codeforces</dt><dd class="font-semibold">{{ profile.codeforces_handle|default:"—" }}</dd></div>
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Vjudge</dt><dd class="font-semibold">{{ profile.vjudge_handle|default:"—" }}</dd></div>
+      <div class="flex justify-between px-6 py-4"><dt class="text-neutral-500">Level</dt><dd class="font-semibold">Level {{ profile.level.level_number }} · {{ profile.level.title }}</dd></div>
+    </dl>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="{% url 'app:me-waves' %}" class="rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-800">My waves</a>
+      <a href="{% url 'app:me-attendances' %}" class="rounded-full border border-neutral-300 px-6 py-3 text-sm font-semibold text-neutral-700 hover:bg-neutral-50">My attendance</a>
+    </div>
+  </section>
+</main>
+{% endblock %}

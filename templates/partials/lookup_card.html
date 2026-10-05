@@ -1,0 +1,34 @@
+<div class="rounded-2xl border border-neutral-200">
+  <div class="border-b border-neutral-200 px-6 py-4">
+    <h2 class="text-xs font-bold uppercase tracking-widest text-neutral-400">{{ title }}</h2>
+  </div>
+
+  <div class="divide-y divide-neutral-100">
+    {% for item in items %}
+    <div class="flex items-center justify-between px-6 py-3">
+      <div>
+        <p class="text-sm font-semibold">{{ item.name }}</p>
+        <p class="text-xs text-neutral-400">{{ item.n }} assigned</p>
+      </div>
+      <form method="post" onsubmit="return confirm('Delete {{ item.name|escapejs }}?')">
+        {% csrf_token %}
+        <input type="hidden" name="kind" value="{{ kind }}">
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="pk" value="{{ item.pk }}">
+        <button class="text-xs font-semibold text-red-600 hover:underline">Delete</button>
+      </form>
+    </div>
+    {% empty %}
+    <p class="px-6 py-8 text-center text-sm text-neutral-500">Nothing here yet.</p>
+    {% endfor %}
+  </div>
+
+  <form method="post" class="flex gap-3 border-t border-neutral-200 p-4">
+    {% csrf_token %}
+    <input type="hidden" name="kind" value="{{ kind }}">
+    <input type="hidden" name="action" value="add">
+    <input name="name" maxlength="100" placeholder="New {{ title|lower }}"
+           class="w-full rounded-xl border border-neutral-300 px-4 py-2.5 text-sm outline-none focus:border-[#2b6aad] focus:ring-4 focus:ring-[#2b6aad]/10">
+    <button class="rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white hover:bg-neutral-800">Add</button>
+  </form>
+</div>

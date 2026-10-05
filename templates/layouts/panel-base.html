@@ -1,0 +1,105 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Dashboard | ICPC FCAI CU{% endblock %}</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" />
+    <style>
+      body { font-family: "Inter", Arial, sans-serif; }
+      #panel-menu:checked ~ aside { display: block; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    {% block head %}{% endblock %}
+  </head>
+
+  <body class="min-h-screen bg-white text-neutral-950" style="--accent: {% block accent %}#2b6aad{% endblock %};">
+    <nav class="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur-xl">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center gap-3">
+            <label for="panel-menu"
+                   class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-neutral-200 text-neutral-700 transition hover:bg-neutral-100 lg:hidden">
+              <i class="fa-solid fa-bars"></i>
+            </label>
+
+            <a href="{% url 'app:home-index' %}" class="flex items-center gap-3">
+              <div class="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl">
+                {% include "partials/logo.html" %}
+              </div>
+              <div class="hidden sm:block">
+                <p class="text-sm font-bold leading-none text-neutral-950">ICPC CU</p>
+                <p class="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+                  {% block panel_label %}Panel{% endblock %}
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="{% url 'app:home-index' %}"
+               class="hidden rounded-lg px-4 py-2 text-sm font-medium text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-950 sm:inline-flex">
+              <i class="fa-solid fa-arrow-up-right-from-square mr-2 text-xs"></i> Public site
+            </a>
+
+            <div class="flex items-center gap-3 rounded-full border border-neutral-200 py-1.5 pl-1.5 pr-4">
+              <span class="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--accent)] text-xs font-black uppercase text-white">
+                {{ request.user.username|slice:":1" }}
+              </span>
+              <div class="hidden leading-tight sm:block">
+                <p class="text-sm font-semibold text-neutral-950">{{ request.user.full_name|default:request.user.username }}</p>
+                <p class="text-[10px] font-medium uppercase tracking-widest text-neutral-400">
+                  {% for r in user_roles %}{{ r }}{% if not forloop.last %} · {% endif %}{% empty %}{% if request.user.is_superuser %}admin{% endif %}{% endfor %}
+                </p>
+              </div>
+            </div>
+
+            <form method="post" action="{% url 'auth:logout' %}">
+              {% csrf_token %}
+              <button class="cursor-pointer rounded-lg bg-red-200 px-4 py-3 text-sm font-semibold text-slate-700 transition-all duration-300 ease-in-out hover:bg-red-500 hover:text-white"
+                      title="Logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span class="hidden sm:inline">Logout</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+      <div class="lg:grid lg:grid-cols-[16rem_1fr] lg:gap-10">
+        <input id="panel-menu" type="checkbox" class="hidden" />
+
+        <aside class="mb-8 hidden lg:sticky lg:top-24 lg:mb-0 lg:block lg:self-start">
+          <nav class="space-y-6 rounded-2xl border border-neutral-200 bg-white p-3">
+            {% block sidebar %}{% endblock %}
+          </nav>
+        </aside>
+
+        <div class="min-w-0 [&_main]:bg-transparent [&_section]:mx-0 [&_section]:max-w-none [&_section]:px-0 [&_section]:py-0">
+          {% include "partials/messages.html" %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+
+    <footer class="border-t border-neutral-200 bg-white">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+        <p class="text-xs text-neutral-400">© 2026 ICPC CU Community. All rights reserved.</p>
+        <div class="flex items-center gap-5 text-neutral-400">
+          <a href="https://icpc-fcai-cu.org" title="Main Site" class="duration-200 hover:scale-125 hover:text-neutral-950"><i class="fa-solid fa-link"></i></a>
+          <a href="https://chat.whatsapp.com/CtyfGcOzA3z1rADok27Ray" title="WhatsApp" class="duration-200 hover:scale-125 hover:text-neutral-950"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.youtube.com/@ICPCFCAICU" title="YouTube" class="duration-200 hover:scale-125 hover:text-neutral-950"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://discord.gg/5vq5ma7wrN" title="Discord" class="duration-200 hover:scale-125 hover:text-neutral-950"><i class="fa-brands fa-discord"></i></a>
+          <a href="https://www.linkedin.com/company/icpc-fcai-cu-community" title="LinkedIn" class="duration-200 hover:scale-125 hover:text-neutral-950"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/icpcfcaicu" title="Facebook" class="duration-200 hover:scale-125 hover:text-neutral-950"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+    </footer>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

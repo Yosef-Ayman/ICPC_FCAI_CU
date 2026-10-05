@@ -1,0 +1,9 @@
+{% if messages %}
+<div class="mx-auto max-w-7xl space-y-2 px-5 pt-4 lg:px-8">
+  {% for message in messages %}
+    <div class="rounded-xl border px-4 py-3 text-sm {% if message.tags == 'error' %}border-red-200 bg-red-50 text-red-700{% else %}border-green-200 bg-green-50 text-green-700{% endif %}">
+      {{ message }}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

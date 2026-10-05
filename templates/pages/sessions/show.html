@@ -1,0 +1,36 @@
+{% extends "layouts/guest-layout.html" %}
+{% block title %}{{ session.title }} | ICPC FCAI CU{% endblock %}
+{% block content %}
+<main class="bg-white text-neutral-950">
+  <section class="mx-auto max-w-3xl px-5 py-16 lg:py-24">
+    <a href="{% url 'app:sessions-index' %}" class="text-xs font-semibold text-neutral-500 hover:text-neutral-950"><i class="fa-solid fa-arrow-left mr-1"></i> All sessions</a>
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      {% if session.level %}<a href="{% url 'app:levels-show' session.level.slug %}" class="rounded-full bg-[#2b6aad]/10 px-3 py-1 text-xs font-bold text-[#2b6aad]">LEVEL {{ session.level.level_number }}</a>{% endif %}
+      {% if session.wave %}<a href="{% url 'app:waves-show' session.wave.slug %}" class="text-xs text-neutral-400 hover:text-neutral-950">{{ session.wave.title }}</a>{% endif %}
+    </div>
+    <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">{{ session.title }}</h1>
+    {% if session.description %}<p class="mt-4 text-base leading-8 text-neutral-500">{{ session.description }}</p>{% endif %}
+
+    <div class="mt-8 grid grid-cols-2 overflow-hidden rounded-2xl border border-neutral-200">
+      <div class="border-r border-neutral-200 p-6">
+        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400">Starts</p>
+        <p class="mt-2 text-lg font-bold">{{ session.starts_at|date:"F j, Y" }}</p>
+        <p class="text-sm text-neutral-500">{{ session.starts_at|date:"h:i A" }}</p>
+      </div>
+      <div class="p-6">
+        <p class="text-xs font-bold uppercase tracking-widest text-neutral-400">Ends</p>
+        {% if session.ends_at %}
+          <p class="mt-2 text-lg font-bold">{{ session.ends_at|date:"F j, Y" }}</p>
+          <p class="text-sm text-neutral-500">{{ session.ends_at|date:"h:i A" }}</p>
+        {% else %}<p class="mt-2 text-sm text-neutral-500">Not set</p>{% endif %}
+      </div>
+    </div>
+
+    {% if is_staff_member %}
+    <a href="{% url 'app:attendance-index' session.slug %}" class="mt-8 inline-flex items-center gap-3 rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-800">
+      <i class="fa-solid fa-clipboard-check text-xs"></i> Take attendance
+    </a>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}

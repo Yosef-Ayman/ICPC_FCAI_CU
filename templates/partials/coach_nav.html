@@ -1,0 +1,10 @@
+<nav class="flex flex-wrap gap-1 border-b border-neutral-200 pb-3">
+  {% with a="bg-neutral-950 text-white" i="text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950" %}
+  <a href="{% url 'app:coach-dashboard' %}" class="rounded-lg px-4 py-2 text-sm font-semibold {% if section == 'dashboard' %}{{ a }}{% else %}{{ i }}{% endif %}">Dashboard</a>
+  <a href="{% url 'app:coach-waves' %}" class="rounded-lg px-4 py-2 text-sm font-semibold {% if section == 'waves' %}{{ a }}{% else %}{{ i }}{% endif %}">Waves</a>
+  <a href="{% url 'app:coach-sessions' %}" class="rounded-lg px-4 py-2 text-sm font-semibold {% if section == 'sessions' %}{{ a }}{% else %}{{ i }}{% endif %}">Sessions</a>
+  <a href="{% url 'app:coach-students' %}" class="rounded-lg px-4 py-2 text-sm font-semibold {% if section == 'students' %}{{ a }}{% else %}{{ i }}{% endif %}">Students</a>
+  <a href="{% url 'app:coach-report-attendance' %}" class="rounded-lg px-4 py-2 text-sm font-semibold {% if section == 'reports' %}{{ a }}{% else %}{{ i }}{% endif %}">Reports</a>
+  {% if is_manager %}<a href="{% url 'app:manage-staff-index' %}" class="rounded-lg px-4 py-2 text-sm font-semibold {{ i }}">Staff</a>{% endif %}
+  {% endwith %}
+</nav>
