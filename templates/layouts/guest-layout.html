@@ -10,6 +10,7 @@
       name="description"
       content="{% block description %}ICPC FCAI CU | Community description{% endblock %}"
     />
+    <link rel="icon" href="{% static "logo.svg" %}" type="image/svg+xml">
     <meta
       name="keywords"
       content="{% block keywords %}ICPC FCAI CU | Community keywords{% endblock %}"
@@ -28,7 +29,7 @@
     <meta property="og:url" content="{{ request.build_absolute_uri }}" />
     <meta
       property="og:image"
-      content="{% static 'images/og-image.jpg' %}"
+      content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/og-image.jpg' %}"
     />
     <meta property="og:locale" content="ar_EG" />
 
